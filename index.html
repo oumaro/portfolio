@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Aoutil - Junior Full Stack Developer</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration and Theme Colors -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode based on the 'dark' class on the body
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // New primary color: Vibrant Teal
+                        'primary-teal': '#14b8a6', 
+                        // Theme colors defined using CSS variables for JS toggling
+                        'bg-default': 'var(--bg-default)',
+                        'card-default': 'var(--card-default)',
+                        'text-default': 'var(--text-default)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 
+    ======================================
+    [1] SEPARATE CSS STYLING (Custom CSS Block)
+    ======================================
+    All custom styles and theme definitions go here.
+    -->
+    <style>
+        /* Define Dark Theme Variables (Default) */
+        body {
+            --bg-default: #0d212b;
+            --card-default: #1b323c;
+            --text-default: #e0f2f1;
+            transition: background-color 0.5s, color 0.5s; /* Smooth transition for theme change */
+        }
+
+        /* Define Light Theme Variables */
+        body.light {
+            --bg-default: #f0f9ff; /* Light Sky Blue */
+            --card-default: #ffffff;
+            --text-default: #1b323c;
+        }
+
+        /* Generic styles using CSS variables */
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Style for the skill cards hover effect */
+        .skill-card:hover {
+            box-shadow: 0 0 30px rgba(20, 184, 166, 0.6); /* Teal glow */
+            transform: translateY(-5px); /* Lift effect */
+        }
+    </style>
+
+    <!-- Load Lucide Icons for visual appeal (UMD bundle fix) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+</head>
+<!-- Apply theme classes using Tailwind and custom variables -->
+<body class="bg-bg-default text-text-default font-sans min-h-screen flex items-center justify-center p-4 transition-colors duration-500">
+
+    <!-- Portfolio Card Container -->
+    <div id="portfolio-card" class="w-full max-w-4xl bg-card-default card-shadow rounded-xl overflow-hidden my-8 border border-gray-700/50 transition-colors duration-500">
+
+        <!-- Header / Hero Section (New Teal Gradient) -->
+        <header class="relative text-center p-8 sm:p-12 bg-gradient-to-r from-primary-teal/20 to-teal-900/10 border-b border-primary-teal/50">
+            
+            <!-- Theme Toggle Button [3] -->
+            <button id="theme-toggle" class="absolute top-4 right-4 p-2 rounded-full bg-primary-teal/20 text-text-default hover:bg-primary-teal/40 transition duration-300 shadow-md" title="Toggle Light/Dark Mode">
+                <i data-lucide="sun" class="w-5 h-5 block dark-icon"></i>
+                <i data-lucide="moon" class="w-5 h-5 hidden light-icon"></i>
+            </button>
+
+            <div class="flex flex-col items-center">
+                <!-- Avatar Placeholder -->
+                <div class="w-24 h-24 sm:w-32 sm:h-32 bg-primary-teal/50 rounded-full flex items-center justify-center mb-4 ring-4 ring-primary-teal ring-offset-bg-default ring-offset-4 shadow-xl transition-colors duration-500">
+                    <span class="text-4xl sm:text-6xl font-extrabold text-white drop-shadow-lg">OA</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-text-default mb-1 transition-colors duration-500">
+                    Omar Aoutil
+                </h1>
+                <p class="text-lg sm:text-2xl font-light text-gray-400">
+                    Junior Full Stack Web Developer
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="p-6 sm:p-10">
+            
+            <!-- Bio/Summary Section (NOW CLICKABLE AND SUBTLY STYLED) -->
+            <section class="mb-10">
+                <!-- Clickable Header for Toggle (Centered, no rectangle, subtle underline on hover) -->
+                <button id="about-me-toggle" class="w-full text-center focus:outline-none cursor-pointer group transition duration-300 mb-6 border-b-2 border-transparent hover:border-primary-teal/50 pb-2">
+                    <div class="flex items-center justify-center">
+                        <h2 class="text-3xl font-bold text-primary-teal transition-colors duration-300 group-hover:text-teal-400 tracking-wider">
+                            About Me
+                        </h2>
+                    </div>
+                </button>
+                
+                <!-- Content to Toggle (Initially visible) -->
+                <div id="about-me-content" class="transition-all duration-300 ease-in-out">
+                    
+                    <!-- NEW ABOUT ME TEXT START -->
+                    <p class="text-text-default leading-relaxed text-lg transition-colors duration-500 text-center mb-4">
+                        I’m passionate about creating modern, responsive web applications that deliver great user experiences. As a **full-stack developer**, I enjoy working with both the front-end and back-end to bring ideas to life using clean, efficient code.
+                    </p>
+                    <p class="text-text-default leading-relaxed text-lg transition-colors duration-500 text-center mb-4">
+                        Alongside coding, I’m skilled in diagnosing and repairing cell phones, which lets me combine my love for technology with hands-on problem solving.
+                    </p>
+                    <p class="text-text-default leading-relaxed text-lg transition-colors duration-500 text-center">
+                        I’m always eager to learn new tools, take on challenges, and grow as a developer while helping others through technology.
+                    </p>
+                    <!-- NEW ABOUT ME TEXT END -->
+                </div>
+            </section>
+
+            <!-- Tech Stack / Skills Section -->
+            <section>
+                <h2 class="text-2xl font-semibold border-b border-primary-teal pb-2 mb-6 text-primary-teal">Core Tech Stack</h2>
+                
+                <!-- Responsive Grid for Skills - Cards are darker and have a primary color glow on hover -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    
+                    <!-- HTML & CSS -->
+                    <div class="skill-card flex items-center space-x-3 p-4 bg-gray-200/50 dark:bg-gray-800 rounded-xl border border-gray-700/50 shadow-lg transition duration-500 cursor-pointer">
+                        <i data-lucide="layout-list" class="w-6 h-6 text-blue-400 flex-shrink-0"></i>
+                        <span class="text-text-default font-medium tracking-wide">HTML & CSS</span>
+                    </div>
+
+                    <!-- JS -->
+                    <div class="skill-card flex items-center space-x-3 p-4 bg-gray-200/50 dark:bg-gray-800 rounded-xl border border-gray-700/50 shadow-lg transition duration-500 cursor-pointer">
+                        <i data-lucide="code" class="w-6 h-6 text-yellow-400 flex-shrink-0"></i>
+                        <span class="text-text-default font-medium tracking-wide">JavaScript (JS)</span>
+                    </div>
+
+                    <!-- NEW: React.js -->
+                    <div class="skill-card flex items-center space-x-3 p-4 bg-gray-200/50 dark:bg-gray-800 rounded-xl border border-gray-700/50 shadow-lg transition duration-500 cursor-pointer">
+                        <i data-lucide="zap" class="w-6 h-6 text-sky-400 flex-shrink-0"></i>
+                        <span class="text-text-default font-medium tracking-wide">React.js</span>
+                    </div>
+                    
+                    <!-- Python -->
+                    <div class="skill-card flex items-center space-x-3 p-4 bg-gray-200/50 dark:bg-gray-800 rounded-xl border border-gray-700/50 shadow-lg transition duration-500 cursor-pointer">
+                        <i data-lucide="dices" class="w-6 h-6 text-green-400 flex-shrink-0"></i>
+                        <span class="text-text-default font-medium tracking-wide">Python</span>
+                    </div>
+
+                    <!-- Django -->
+                    <div class="skill-card flex items-center space-x-3 p-4 bg-gray-200/50 dark:bg-gray-800 rounded-xl border border-gray-700/50 shadow-lg transition duration-500 cursor-pointer">
+                        <i data-lucide="feather" class="w-6 h-6 text-red-400 flex-shrink-0"></i>
+                        <span class="text-text-default font-medium tracking-wide">Django</span>
+                    </div>
+
+                    <!-- MySQL -->
+                    <div class="skill-card flex items-center space-x-3 p-4 bg-gray-200/50 dark:bg-gray-800 rounded-xl border border-gray-700/50 shadow-lg transition duration-500 cursor-pointer">
+                        <i data-lucide="database" class="w-6 h-6 text-cyan-400 flex-shrink-0"></i>
+                        <span class="text-text-default font-medium tracking-wide">MySQL</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- NEW: Contact Me Form Section -->
+            <section id="contact" class="mt-10 pt-6 border-t border-primary-teal/50">
+                <h2 class="text-2xl font-semibold border-b border-primary-teal pb-2 mb-6 text-primary-teal">Contact Me</h2>
+                
+                <form id="contactForm" class="space-y-4">
+                    <!-- Name Field -->
+                    <input type="text" id="name" placeholder="Your Name" required 
+                           class="w-full p-3 rounded-lg bg-card-default border border-gray-600 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal text-text-default placeholder-gray-500 transition-colors duration-300 shadow-inner">
+                    
+                    <!-- Email Field -->
+                    <input type="email" id="email" placeholder="Your Email" required 
+                           class="w-full p-3 rounded-lg bg-card-default border border-gray-600 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal text-text-default placeholder-gray-500 transition-colors duration-300 shadow-inner">
+                    
+                    <!-- Message Field -->
+                    <textarea id="message" rows="4" placeholder="Your Message" required 
+                              class="w-full p-3 rounded-lg bg-card-default border border-gray-600 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal text-text-default placeholder-gray-500 transition-colors duration-300 shadow-inner"></textarea>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" 
+                            class="w-full sm:w-auto px-6 py-3 bg-primary-teal text-white font-bold rounded-lg hover:bg-teal-600 transition duration-300 shadow-lg shadow-primary-teal/30 transform hover:scale-[1.01]">
+                        Send Message
+                    </button>
+                    
+                    <!-- Success/Error Message Container -->
+                    <div id="formMessage" class="mt-4 p-3 rounded-lg hidden text-sm font-medium"></div>
+                </form>
+            </section>
+        </main>
+
+        <!-- Footer / Contact Section (Styled Links) -->
+        <footer class="p-6 sm:p-8 bg-primary-teal/10 border-t border-primary-teal/50 mt-8 text-center">
+            <p class="text-sm text-gray-400">
+                Let's build something great together.
+            </p>
+            <!-- Social/Contact Links Placeholder - Better hover effects -->
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#" class="text-text-default hover:text-white hover:bg-primary-teal p-3 rounded-full transition duration-300 transform hover:scale-110 shadow-md" title="Email">
+                    <i data-lucide="mail" class="w-5 h-5">omaroutil@gmail.com</i>
+                </a>
+                <a href="#" class="text-text-default hover:text-white hover:bg-primary-teal p-3 rounded-full transition duration-300 transform hover:scale-110 shadow-md" title="GitHub">
+                    <i data-lucide="github" class="w-5 h-5">https://github.com/oumaro</i>
+                </a>
+                <a href="#" class="text-text-default hover:text-white hover:bg-primary-teal p-3 rounded-full transition duration-300 transform hover:scale-110 shadow-md" title="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5">https://www.linkedin.com/in/aoutil-omar/</i>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+    
+    <!-- 
+    ======================================
+    [3] SEPARATE JS INTERACTIVITY BLOCK
+    ======================================
+    All JavaScript logic goes here.
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // Theme Toggle Logic
+            const toggleButton = document.getElementById('theme-toggle');
+            const body = document.body;
+            const darkIcon = document.querySelector('.dark-icon');
+            const lightIcon = document.querySelector('.light-icon');
+            
+            // Function to set the theme
+            function setTheme(isDark) {
+                if (isDark) {
+                    body.classList.remove('light');
+                    darkIcon.style.display = 'block';
+                    lightIcon.style.display = 'none';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.add('light');
+                    darkIcon.style.display = 'none';
+                    lightIcon.style.display = 'block';
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            // [Interactivity] Load theme preference from localStorage or default to dark
+            const storedTheme = localStorage.getItem('theme');
+            const isDarkPreferred = storedTheme === 'dark' || (storedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            
+            setTheme(isDarkPreferred);
+
+            // [Interactivity] Event listener for the toggle button
+            toggleButton.addEventListener('click', () => {
+                const isLight = body.classList.contains('light');
+                setTheme(!isLight);
+            });
+            
+            // Contact Form Submission Handler
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+
+            if (contactForm && formMessage) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value.trim();
+                    
+                    // Display success message
+                    formMessage.textContent = 'Thank you for your message, ' + (name || 'Anonymous') + '! This is a static demo, but in a real application, your message would be sent.';
+                    
+                    // Set colors for success message
+                    formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-300');
+                    formMessage.classList.add('bg-green-500/20', 'text-green-300');
+                    formMessage.style.display = 'block';
+
+                    // Clear the form fields and hide message after a delay
+                    setTimeout(() => {
+                        contactForm.reset();
+                    }, 500);
+
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 6000);
+                });
+            }
+            
+            // About Me Toggle Logic 
+            const aboutMeToggle = document.getElementById('about-me-toggle');
+            const aboutMeContent = document.getElementById('about-me-content');
+
+            if (aboutMeToggle && aboutMeContent) {
+                aboutMeToggle.addEventListener('click', () => {
+                    // Simply toggle the hidden class
+                    aboutMeContent.classList.toggle('hidden');
+                });
+            }
+
+            console.log("Portfolio JavaScript running successfully. Theme toggle, Form handler, and About Me toggle active.");
+        });
+    </script>
+</body>
+</html>
