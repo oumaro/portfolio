@@ -83,9 +83,14 @@
             </button>
 
             <div class="flex flex-col items-center">
-               
-                <div class="w-24 h-24 sm:w-32 sm:h-32 bg-primary-teal/50 rounded-full flex items-center justify-center mb-4 ring-4 ring-primary-teal ring-offset-bg-default ring-offset-4 shadow-xl transition-colors duration-500">
-                    <span class="text-4xl sm:text-6xl font-extrabold text-white drop-shadow-lg"> <img src="https://raw.githubusercontent.com/oumaro/portfolio/refs/heads/main/DSC_0318.jpg"> </img></span>
+                <!-- Avatar Section: Replaced placeholder with the actual circular image -->
+                <div class="w-24 h-24 sm:w-32 sm:h-32 bg-primary-teal/50 rounded-full flex items-center justify-center mb-4 ring-4 ring-primary-teal ring-offset-bg-default ring-offset-4 shadow-xl transition-colors duration-500 overflow-hidden">
+                    <!-- Your Profile Image -->
+                    <img src="https://raw.githubusercontent.com/oumaro/portfolio/refs/heads/main/DSC_0318.jpg" 
+                         alt="Omar Aoutil Profile Picture" 
+                         class="w-full h-full object-cover rounded-full"
+                         onerror="this.onerror=null; this.src='https://placehold.co/128x128/14b8a6/ffffff?text=OA+Error'"
+                    >
                 </div>
 
                 <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-text-default mb-1 transition-colors duration-500">
@@ -212,11 +217,13 @@
                 <a href="mailto:omaroutil@gmail.com" class="text-text-default hover:text-white hover:bg-primary-teal p-3 rounded-full transition duration-300 transform hover:scale-110 shadow-md" title="Email">
                     <i data-lucide="mail" class="w-5 h-5"></i>
                 </a>
+                <!-- Updated GitHub link to show the icon correctly -->
                 <a href="https://github.com/oumaro/portfolio" class="text-text-default hover:text-white hover:bg-primary-teal p-3 rounded-full transition duration-300 transform hover:scale-110 shadow-md" title="GitHub">
-                    <i data-lucide="github" class="w-5 h-5">https://github.com/oumaro</i>
+                    <i data-lucide="github" class="w-5 h-5"></i>
                 </a>
+                <!-- Updated LinkedIn link to show the icon correctly -->
                 <a href="https://www.linkedin.com/in/aoutil-omar/" class="text-text-default hover:text-white hover:bg-primary-teal p-3 rounded-full transition duration-300 transform hover:scale-110 shadow-md" title="LinkedIn">
-                    <i data-lucide="linkedin" class="w-5 h-5">https://www.linkedin.com/in/aoutil-omar/</i>
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
                 </a>
             </div>
         </footer>
@@ -314,8 +321,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
